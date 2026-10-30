@@ -173,6 +173,134 @@ footer,.footer{background:#eaf1f6!important;color:#40566f!important;border-color
 @media(max-width:900px){.header{min-height:72px!important;gap:7px!important;padding:8px 10px!important}.tools{gap:5px!important}.tools .auth-menu-toggle{width:38px!important;height:38px!important;min-width:38px!important}.auth-menu-pop{top:calc(100% + 8px)}}
 @media(max-width:520px){.brand{min-width:0!important}.brand img{width:40px!important;height:44px!important}.tools .auth-menu-toggle{width:35px!important;height:35px!important;min-width:35px!important}}
 </style>
+
+<style id="responsive-header-and-balanced-dark-theme">
+/* Mobile header: keep the brand, menu and utility icons on one clean row. */
+@media (max-width: 900px) {
+  header.header#home {
+    position: sticky !important; top: 0 !important; z-index: 99999 !important;
+    display: flex !important; flex-direction: row !important; flex-wrap: wrap !important;
+    align-items: center !important; justify-content: space-between !important;
+    width: 100% !important; min-height: 66px !important; height: auto !important;
+    padding: 7px 10px !important; gap: 7px !important; overflow: visible !important;
+    box-sizing: border-box !important;
+  }
+  header.header .brand { order: 1 !important; flex: 1 1 120px !important; min-width: 0 !important; margin: 0 !important; gap: 6px !important; }
+  header.header .brand img { width: 38px !important; height: 42px !important; object-fit: contain !important; }
+  header.header .brand b { font-size: 12px !important; line-height: 1.2 !important; }
+  header.header .brand strong { font-size: 8px !important; letter-spacing: 1.2px !important; }
+  header.header #menuToggle, header.header .menu {
+    display: inline-flex !important; order: 2 !important; flex: 0 0 40px !important;
+    width: 40px !important; min-width: 40px !important; height: 40px !important; min-height: 40px !important;
+    align-items: center !important; justify-content: center !important; padding: 0 !important;
+    border-radius: 12px !important; background: linear-gradient(135deg,#087f86,#19b6a7) !important;
+    color: #fff !important; border: 0 !important; font-size: 22px !important; line-height: 1 !important;
+  }
+  header.header .tools { order: 3 !important; display: flex !important; flex: 0 0 auto !important; width: auto !important; margin: 0 !important; gap: 4px !important; flex-wrap: nowrap !important; }
+  header.header .tools > button, header.header .tools .auth-menu-toggle {
+    display: inline-flex !important; flex: 0 0 34px !important; width: 34px !important; min-width: 34px !important;
+    height: 35px !important; min-height: 35px !important; padding: 4px !important; align-items: center !important; justify-content: center !important;
+  }
+  header.header #mainNav {
+    display: none !important; position: absolute !important; top: calc(100% + 6px) !important;
+    inset-inline: 9px !important; width: auto !important; max-height: min(70vh,520px) !important;
+    overflow-y: auto !important; flex: 0 0 calc(100% - 18px) !important; flex-direction: column !important;
+    flex-wrap: nowrap !important; align-items: stretch !important; justify-content: flex-start !important;
+    gap: 4px !important; margin: 0 !important; padding: 9px !important;
+    border: 1px solid var(--nav-border,#dce7f0) !important; border-radius: 15px !important;
+    background: var(--nav-bg,#fff) !important; box-shadow: 0 16px 38px rgba(10,25,45,.22) !important;
+    z-index: 100000 !important;
+  }
+  header.header #mainNav.open { display: flex !important; }
+  header.header #mainNav a {
+    display: flex !important; flex: 0 0 auto !important; flex-direction: row !important;
+    align-items: center !important; justify-content: flex-start !important; gap: 12px !important;
+    width: 100% !important; min-width: 0 !important; min-height: 45px !important;
+    padding: 9px 12px !important; border: 0 !important; border-radius: 10px !important;
+    color: var(--nav-text,#172b4d) !important; background: transparent !important;
+    font-size: 13px !important; white-space: normal !important;
+  }
+  header.header #mainNav a i { display: inline-block !important; width: 23px !important; text-align: center !important; font-size: 18px !important; }
+  header.header #mainNav a:hover, header.header #mainNav a.active { color: var(--nav-active,#087f86) !important; background: var(--nav-hover,#e4f6f4) !important; }
+}
+@media (max-width: 390px) {
+  header.header#home { padding-inline: 7px !important; gap: 5px !important; }
+  header.header .brand img { width: 33px !important; height: 37px !important; }
+  header.header .brand b { font-size: 10px !important; }
+  header.header .brand strong { font-size: 7px !important; }
+  header.header .tools { gap: 2px !important; }
+  header.header .tools > button, header.header .tools .auth-menu-toggle { flex-basis: 31px !important; width: 31px !important; min-width: 31px !important; height: 33px !important; min-height: 33px !important; }
+}
+/* A consistent dark palette across the whole site, not just selected cards. */
+html[data-theme="dark"] {
+  color-scheme: dark !important;
+  --ink: #edf3ff !important; --muted: #a8b7d0 !important; --surface: #111b2d !important;
+  --edge: #293a56 !important; --bg: #080f1d !important; --accent: #48d6c7 !important;
+  --nav-bg: #111c30; --nav-border: #2b3d5c; --nav-text: #eaf1ff; --nav-active: #61e0d1; --nav-hover: #1b3650;
+  background: #080f1d !important;
+}
+html[data-theme="dark"], html[data-theme="dark"] body {
+  background: radial-gradient(ellipse at 10% 0%,rgba(23,115,133,.17),transparent 34%),
+              radial-gradient(ellipse at 90% 8%,rgba(92,61,166,.15),transparent 30%),
+              linear-gradient(180deg,#0a1424 0%,#0b1322 55%,#080f1d 100%) !important;
+  color: #edf3ff !important; color-scheme: dark !important;
+}
+html[data-theme="dark"] body:before { opacity: .18 !important; background-image: radial-gradient(rgba(116,160,202,.24) .7px,transparent .7px) !important; }
+html[data-theme="dark"] .header { background: rgba(12,23,40,.94) !important; border-bottom: 1px solid #263752 !important; box-shadow: 0 8px 28px rgba(0,0,0,.28) !important; }
+html[data-theme="dark"] .brand, html[data-theme="dark"] .brand b, html[data-theme="dark"] nav a, html[data-theme="dark"] .header .tools button { color: #edf3ff !important; }
+html[data-theme="dark"] .brand strong, html[data-theme="dark"] nav a i, html[data-theme="dark"] .metrics>div i { color: #58d8cb !important; }
+html[data-theme="dark"] nav a:hover, html[data-theme="dark"] nav a.active { color: #69e6d7 !important; background: rgba(53,190,180,.12) !important; border-color: #315d68 !important; }
+html[data-theme="dark"] .tools button, html[data-theme="dark"] .menu, html[data-theme="dark"] #searchForm { background: #14233a !important; color: #edf3ff !important; border-color: #304563 !important; }
+html[data-theme="dark"] .hero { background: linear-gradient(115deg,#12283a 0%,#111d31 54%,#282039 100%) !important; border-color: #2b405d !important; }
+html[data-theme="dark"] .hero:before { background: linear-gradient(90deg,#101d30 0%,rgba(16,29,48,.94) 31%,rgba(16,29,48,.30) 55%,transparent 72%) !important; }
+html[data-theme="dark"] .reference-hero-title, html[data-theme="dark"] .reference-hero-title span,
+html[data-theme="dark"] .hero-copy h1, html[data-theme="dark"] .hero-copy h2,
+html[data-theme="dark"] .content h2, html[data-theme="dark"] .content h3,
+html[data-theme="dark"] .training-heading h2, html[data-theme="dark"] .training-video-info h3,
+html[data-theme="dark"] .section h2, html[data-theme="dark"] .solution-videos-heading h2,
+html[data-theme="dark"] .solution-video-info h3, html[data-theme="dark"] .project-gallery-info h3 { color: #edf3ff !important; }
+html[data-theme="dark"] .hero-copy>p, html[data-theme="dark"] .content p, html[data-theme="dark"] .training-heading p,
+html[data-theme="dark"] .training-video-info p, html[data-theme="dark"] .section p,
+html[data-theme="dark"] .solution-videos-heading p, html[data-theme="dark"] .project-gallery-info p { color: #afbed5 !important; }
+html[data-theme="dark"] .card, html[data-theme="dark"] .stats, html[data-theme="dark"] .metrics,
+html[data-theme="dark"] .panel, html[data-theme="dark"] .section, html[data-theme="dark"] .training-feature,
+html[data-theme="dark"] .training-video-card, html[data-theme="dark"] .industrial-solution-videos,
+html[data-theme="dark"] .solution-video-card, html[data-theme="dark"] .project-gallery-card,
+html[data-theme="dark"] .training-feature .training-gallery-block {
+  background: #111e32 !important; color: #edf3ff !important; border-color: #2a3d5b !important;
+  box-shadow: 0 12px 32px rgba(0,0,0,.22) !important;
+}
+html[data-theme="dark"] .art, html[data-theme="dark"] .training-video-top { background: #172941 !important; }
+html[data-theme="dark"] input, html[data-theme="dark"] textarea, html[data-theme="dark"] select,
+html[data-theme="dark"] #searchForm input { background: #101d31 !important; color: #edf3ff !important; border-color: #304563 !important; }
+html[data-theme="dark"] input::placeholder, html[data-theme="dark"] textarea::placeholder { color: #91a4c0 !important; }
+html[data-theme="dark"] .auth-menu-pop, html[data-theme="dark"] .auth-panel { background: #111e32 !important; color: #edf3ff !important; border-color: #304563 !important; }
+html[data-theme="dark"] .auth-menu-pop .auth-action { background: #1a2b43 !important; color: #edf3ff !important; border-color: #304563 !important; }
+html[data-theme="dark"] footer, html[data-theme="dark"] .footer { background: #0c1728 !important; color: #aebed5 !important; border-color: #263752 !important; }
+html[data-theme="dark"] footer a, html[data-theme="dark"] .footer a { color: #61dcd0 !important; }
+html[data-theme="dark"] .training-group-photo, html[data-theme="dark"] .home-training-card { border-color: #304563 !important; }
+html[data-theme="dark"] .actions a+ a { background: #172941 !important; color: #edf3ff !important; border-color: #304563 !important; }
+html[data-theme="dark"] .metrics>div small, html[data-theme="dark"] .metrics small, html[data-theme="dark"] .metrics span { color: #aebed5 !important; }
+</style>
+<script id="mobile-navigation-final-script">
+(function(){
+  function init(){
+    var header=document.querySelector('header.header');
+    var button=document.getElementById('menuToggle');
+    var nav=document.getElementById('mainNav');
+    if(!header||!button||!nav||button.dataset.finalMenuBound==='1') return;
+    button.dataset.finalMenuBound='1'; button.type='button'; button.setAttribute('aria-controls','mainNav');
+    function close(){nav.classList.remove('open');button.setAttribute('aria-expanded','false');button.setAttribute('aria-label','فتح القائمة');button.textContent='☰';}
+    button.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();var open=!nav.classList.contains('open');nav.classList.toggle('open',open);button.setAttribute('aria-expanded',String(open));button.setAttribute('aria-label',open?'إغلاق القائمة':'فتح القائمة');button.textContent=open?'✕':'☰';});
+    nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
+    document.addEventListener('click',function(e){if(!header.contains(e.target))close();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+    window.addEventListener('resize',function(){if(window.innerWidth>900)close();});
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
+
 </head><body>
 <div class="topglow"></div><div class="animated-gear-field" aria-hidden="true"><span class="gear gear-one">⚙</span><span class="gear gear-two">⚙</span><span class="gear gear-three">⚙</span><span class="gear gear-four">⚙</span></div><header class="header" id="home"><a class="brand" href="#home"><img src="assets/automation-technology-logo.png" alt="Automation Technology"><span><b>AUTOMATION</b><strong>TECHNOLOGY</strong><small>INDUSTRIAL AUTOMATION SOLUTIONS</small></span></a><button class="menu" id="menuToggle">☰</button><nav id="mainNav"><a class="active" href="#home"><i class="fa-solid fa-house nav-real-icon" aria-hidden="true"></i><span data-ar="الرئيسية" data-en="Home">الرئيسية</span></a><a href="#training"><i class="fa-solid fa-chalkboard-user nav-real-icon" aria-hidden="true"></i><span data-ar="التدريب والكورسات" data-en="Training & Courses">التدريب والكورسات</span></a><a href="#solutions"><i class="fa-solid fa-microchip nav-real-icon" aria-hidden="true"></i><span data-ar="الحلول الصناعية" data-en="Industrial Solutions">الحلول الصناعية</span></a><a href="#projects-gallery"><i class="fa-solid fa-diagram-project nav-real-icon" aria-hidden="true"></i><span data-ar="المشاريع والأعمال" data-en="Projects & Portfolio">المشاريع والأعمال</span></a><a href="#youtube"><i class="fa-brands fa-youtube nav-real-icon" aria-hidden="true"></i><span data-ar="يوتيوب" data-en="YouTube">يوتيوب</span></a><a href="#about"><i class="fa-solid fa-circle-info nav-real-icon" aria-hidden="true"></i><span data-ar="من نحن" data-en="About Us">من نحن</span></a></nav><div class="tools"><div class="auth-menu-wrap"><button id="authMenuToggle" class="auth-menu-toggle" type="button" aria-label="الحساب" aria-expanded="false" title="الحساب"><i class="fa-solid fa-user nav-real-icon" aria-hidden="true"></i></button><div class="auth-menu-pop" id="authMenuPop" hidden><button id="authLogin" class="auth-action" type="button"><i class="fa-solid fa-right-to-bracket nav-real-icon" aria-hidden="true"></i><span data-ar="تسجيل الدخول" data-en="Log in">تسجيل الدخول</span></button><button id="authRegister" class="auth-action auth-primary" type="button"><i class="fa-solid fa-user-plus nav-real-icon" aria-hidden="true"></i><span data-ar="إنشاء حساب" data-en="Create account">إنشاء حساب</span></button></div></div><button id="themeToggle" class="theme-toggle" type="button" aria-label="تبديل المظهر" title="التبديل بين الوايت والدارك"><img id="themeIcon" class="theme-icon-image" src="assets/icons/sun.svg" alt="Toggle light/dark theme"><span id="themeText" class="visually-hidden">وايت مود</span></button><button id="searchToggle" aria-label="Search"><i class="fa-solid fa-magnifying-glass nav-real-icon" aria-hidden="true"></i></button><button id="langToggle"><span class="selected">AR</span><span>EN</span></button></div><form id="searchForm"><input id="searchInput" placeholder="ابحث في الموقع"><button data-ar="بحث" data-en="Search">بحث</button></form></header>
 <main><section class="hero"><div class="hero-copy"><h1 class="reference-hero-title"><span data-ar="مستقبلك في" data-en="Your future in">مستقبلك في</span><strong data-ar="الأتمتة الصناعية" data-en="Industrial Automation">الأتمتة الصناعية</strong></h1><div class="hero-logo"><img src="assets/automation-technology-logo.png" alt=""><div><h1>AUTOMATION</h1><b>TECHNOLOGY</b><small>INDUSTRIAL AUTOMATION SOLUTIONS</small></div></div><div class="hero-tag" data-ar="منصة تعليمية متخصصة في الأتمتة الصناعية" data-en="A learning platform for industrial automation">منصة تعليمية متخصصة في الأتمتة الصناعية</div><p data-ar="تعلّم، طبّق، واصنع حلولًا صناعية ذكية — من أساسيات التحكم إلى تطبيقات PLC وHMI وSCADA." data-en="Learn, build, and create smart industrial solutions — from control fundamentals to PLC, HMI, and SCADA applications.">تعلّم، طبّق، واصنع حلولًا صناعية ذكية — من أساسيات التحكم إلى تطبيقات PLC وHMI وSCADA.</p><div class="pills"><span>◉ PLC</span><span>▣ HMI</span><span>▤ SCADA</span><span>⚙ Drives</span><span>⌁ Industrial IoT</span></div><div class="actions"><a href="#training" data-ar="استكشف الكورسات ↙" data-en="Explore courses ↙">استكشف الكورسات ↙</a><a href="#solutions" data-ar="اكتشف الحلول الصناعية" data-en="Explore solutions">اكتشف الحلول الصناعية</a></div></div><div class="hero-image"><img src="assets/robot-gears-reference.jpg" alt="Colorful industrial robotic arm and gears"><div class="artlabel"><b data-ar="الأتمتة الذكية" data-en="SMART AUTOMATION">الأتمتة الذكية</b><strong data-ar="مستقبل أفضل" data-en="BETTER TOMORROW">مستقبل أفضل</strong><small data-ar="تقنية اليوم، صناعة الغد" data-en="Technology today. Industry tomorrow.">تقنية اليوم، صناعة الغد</small></div></div></section>
@@ -533,195 +661,6 @@ document.getElementById('authLogin').addEventListener('click',()=>{setMode('logi
 
 <script id="auth-menu-toggle-script">(()=>{const t=document.getElementById('authMenuToggle'),m=document.getElementById('authMenuPop');if(!t||!m)return;t.addEventListener('click',e=>{e.stopPropagation();m.hidden=!m.hidden;t.setAttribute('aria-expanded',String(!m.hidden))});['authLogin','authRegister'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>{m.hidden=true;t.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!e.target.closest('.auth-menu-wrap')){m.hidden=true;t.setAttribute('aria-expanded','false')}});})();</script>
 <script src="script.js"></script>
-<style id="mobile-navigation-repair">
-@media (max-width: 900px) {
-  .header {
-    position: sticky !important;
-    top: 0 !important;
-    z-index: 5000 !important;
-    display: flex !important;
-    flex-wrap: wrap !important;
-    align-items: center !important;
-    justify-content: space-between !important;
-    min-height: 68px !important;
-    height: auto !important;
-    padding: 8px 12px !important;
-    gap: 8px !important;
-    overflow: visible !important;
-  }
-  .header .brand {
-    order: 1 !important;
-    flex: 1 1 auto !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    gap: 7px !important;
-  }
-  .header .brand img {
-    width: 39px !important;
-    height: 43px !important;
-    object-fit: contain !important;
-  }
-  .header .brand b { font-size: 13px !important; }
-  .header .brand strong { font-size: 9px !important; letter-spacing: 1.5px !important; }
 
-  .header #menuToggle,
-  .header .menu {
-    order: 2 !important;
-    display: inline-flex !important;
-    flex: 0 0 40px !important;
-    width: 40px !important;
-    min-width: 40px !important;
-    height: 40px !important;
-    min-height: 40px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    padding: 0 !important;
-    border-radius: 11px !important;
-    background: linear-gradient(135deg,#087f86,#19b6a7) !important;
-    color: #fff !important;
-    border: 0 !important;
-    font-size: 22px !important;
-    line-height: 1 !important;
-    cursor: pointer !important;
-  }
-  .header .tools {
-    order: 3 !important;
-    display: flex !important;
-    flex: 0 0 auto !important;
-    width: auto !important;
-    margin: 0 !important;
-    gap: 5px !important;
-    flex-wrap: nowrap !important;
-    align-items: center !important;
-  }
-  .header .tools > button {
-    width: 36px !important;
-    min-width: 36px !important;
-    height: 36px !important;
-    min-height: 36px !important;
-    padding: 5px !important;
-  }
-  .header .tools .auth-menu-toggle {
-    width: 37px !important;
-    min-width: 37px !important;
-    height: 37px !important;
-    min-height: 37px !important;
-  }
-  .header #mainNav {
-    order: 4 !important;
-    position: absolute !important;
-    top: calc(100% + 5px) !important;
-    inset-inline: 10px !important;
-    width: auto !important;
-    max-height: min(72vh, 520px) !important;
-    overflow-y: auto !important;
-    display: none !important;
-    flex: none !important;
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    flex-wrap: nowrap !important;
-    gap: 4px !important;
-    margin: 0 !important;
-    padding: 10px !important;
-    background: rgba(255,255,255,.99) !important;
-    border: 1px solid #dce7f0 !important;
-    border-radius: 15px !important;
-    box-shadow: 0 16px 38px rgba(23,43,77,.2) !important;
-    z-index: 6000 !important;
-  }
-  .header #mainNav.open { display: flex !important; }
-  .header #mainNav a {
-    display: flex !important;
-    flex: 0 0 auto !important;
-    flex-direction: row !important;
-    justify-content: flex-start !important;
-    align-items: center !important;
-    gap: 12px !important;
-    width: 100% !important;
-    min-width: 0 !important;
-    min-height: 46px !important;
-    padding: 9px 13px !important;
-    border: 0 !important;
-    border-radius: 10px !important;
-    background: transparent !important;
-    color: #172b4d !important;
-    font-size: 13px !important;
-    white-space: normal !important;
-  }
-  .header #mainNav a i {
-    width: 24px !important;
-    text-align: center !important;
-    font-size: 19px !important;
-  }
-  .header #mainNav a:hover,
-  .header #mainNav a.active { background: #e4f6f4 !important; color: #087f86 !important; }
-}
-@media (max-width: 390px) {
-  .header { padding-inline: 8px !important; gap: 5px !important; }
-  .header .brand img { width: 34px !important; height: 38px !important; }
-  .header .brand b { font-size: 11px !important; }
-  .header .brand strong { font-size: 8px !important; letter-spacing: 1px !important; }
-  .header .tools { gap: 3px !important; }
-  .header .tools > button { width: 32px !important; min-width: 32px !important; height: 33px !important; min-height: 33px !important; }
-  .header .tools .auth-menu-toggle { width: 34px !important; min-width: 34px !important; height: 34px !important; min-height: 34px !important; }
-}
-</style>
-<script id="mobile-navigation-repair-script">
-(function () {
-  function initMobileNavigation() {
-    var header = document.querySelector('.header');
-    var toggle = document.getElementById('menuToggle');
-    var nav = document.getElementById('mainNav');
-    if (!header || !toggle || !nav || toggle.dataset.mobileNavReady === '1') return;
-
-    toggle.dataset.mobileNavReady = '1';
-    toggle.type = 'button';
-    toggle.setAttribute('aria-controls', 'mainNav');
-    toggle.setAttribute('aria-expanded', 'false');
-    toggle.setAttribute('aria-label', 'فتح القائمة');
-    toggle.textContent = '☰';
-
-    function closeMenu() {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.setAttribute('aria-label', 'فتح القائمة');
-      toggle.textContent = '☰';
-    }
-
-    toggle.addEventListener('click', function (event) {
-      event.preventDefault();
-      event.stopPropagation();
-      var isOpen = !nav.classList.contains('open');
-      nav.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', String(isOpen));
-      toggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
-      toggle.textContent = isOpen ? '✕' : '☰';
-    });
-
-    nav.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', closeMenu);
-    });
-
-    document.addEventListener('click', function (event) {
-      if (!header.contains(event.target)) closeMenu();
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') closeMenu();
-    });
-
-    window.addEventListener('resize', function () {
-      if (window.innerWidth > 900) closeMenu();
-    });
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initMobileNavigation);
-  } else {
-    initMobileNavigation();
-  }
-})();
-</script>
 
 </body></html>
