@@ -532,4 +532,196 @@ document.getElementById('authLogin').addEventListener('click',()=>{setMode('logi
 </script>
 
 <script id="auth-menu-toggle-script">(()=>{const t=document.getElementById('authMenuToggle'),m=document.getElementById('authMenuPop');if(!t||!m)return;t.addEventListener('click',e=>{e.stopPropagation();m.hidden=!m.hidden;t.setAttribute('aria-expanded',String(!m.hidden))});['authLogin','authRegister'].forEach(id=>document.getElementById(id)?.addEventListener('click',()=>{m.hidden=true;t.setAttribute('aria-expanded','false')}));document.addEventListener('click',e=>{if(!e.target.closest('.auth-menu-wrap')){m.hidden=true;t.setAttribute('aria-expanded','false')}});})();</script>
-<script src="script.js"></script></body></html>
+<script src="script.js"></script>
+<style id="mobile-navigation-repair">
+@media (max-width: 900px) {
+  .header {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 5000 !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    min-height: 68px !important;
+    height: auto !important;
+    padding: 8px 12px !important;
+    gap: 8px !important;
+    overflow: visible !important;
+  }
+  .header .brand {
+    order: 1 !important;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    gap: 7px !important;
+  }
+  .header .brand img {
+    width: 39px !important;
+    height: 43px !important;
+    object-fit: contain !important;
+  }
+  .header .brand b { font-size: 13px !important; }
+  .header .brand strong { font-size: 9px !important; letter-spacing: 1.5px !important; }
+
+  .header #menuToggle,
+  .header .menu {
+    order: 2 !important;
+    display: inline-flex !important;
+    flex: 0 0 40px !important;
+    width: 40px !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    min-height: 40px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    border-radius: 11px !important;
+    background: linear-gradient(135deg,#087f86,#19b6a7) !important;
+    color: #fff !important;
+    border: 0 !important;
+    font-size: 22px !important;
+    line-height: 1 !important;
+    cursor: pointer !important;
+  }
+  .header .tools {
+    order: 3 !important;
+    display: flex !important;
+    flex: 0 0 auto !important;
+    width: auto !important;
+    margin: 0 !important;
+    gap: 5px !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+  }
+  .header .tools > button {
+    width: 36px !important;
+    min-width: 36px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    padding: 5px !important;
+  }
+  .header .tools .auth-menu-toggle {
+    width: 37px !important;
+    min-width: 37px !important;
+    height: 37px !important;
+    min-height: 37px !important;
+  }
+  .header #mainNav {
+    order: 4 !important;
+    position: absolute !important;
+    top: calc(100% + 5px) !important;
+    inset-inline: 10px !important;
+    width: auto !important;
+    max-height: min(72vh, 520px) !important;
+    overflow-y: auto !important;
+    display: none !important;
+    flex: none !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    flex-wrap: nowrap !important;
+    gap: 4px !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    background: rgba(255,255,255,.99) !important;
+    border: 1px solid #dce7f0 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 16px 38px rgba(23,43,77,.2) !important;
+    z-index: 6000 !important;
+  }
+  .header #mainNav.open { display: flex !important; }
+  .header #mainNav a {
+    display: flex !important;
+    flex: 0 0 auto !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 46px !important;
+    padding: 9px 13px !important;
+    border: 0 !important;
+    border-radius: 10px !important;
+    background: transparent !important;
+    color: #172b4d !important;
+    font-size: 13px !important;
+    white-space: normal !important;
+  }
+  .header #mainNav a i {
+    width: 24px !important;
+    text-align: center !important;
+    font-size: 19px !important;
+  }
+  .header #mainNav a:hover,
+  .header #mainNav a.active { background: #e4f6f4 !important; color: #087f86 !important; }
+}
+@media (max-width: 390px) {
+  .header { padding-inline: 8px !important; gap: 5px !important; }
+  .header .brand img { width: 34px !important; height: 38px !important; }
+  .header .brand b { font-size: 11px !important; }
+  .header .brand strong { font-size: 8px !important; letter-spacing: 1px !important; }
+  .header .tools { gap: 3px !important; }
+  .header .tools > button { width: 32px !important; min-width: 32px !important; height: 33px !important; min-height: 33px !important; }
+  .header .tools .auth-menu-toggle { width: 34px !important; min-width: 34px !important; height: 34px !important; min-height: 34px !important; }
+}
+</style>
+<script id="mobile-navigation-repair-script">
+(function () {
+  function initMobileNavigation() {
+    var header = document.querySelector('.header');
+    var toggle = document.getElementById('menuToggle');
+    var nav = document.getElementById('mainNav');
+    if (!header || !toggle || !nav || toggle.dataset.mobileNavReady === '1') return;
+
+    toggle.dataset.mobileNavReady = '1';
+    toggle.type = 'button';
+    toggle.setAttribute('aria-controls', 'mainNav');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'فتح القائمة');
+    toggle.textContent = '☰';
+
+    function closeMenu() {
+      nav.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'فتح القائمة');
+      toggle.textContent = '☰';
+    }
+
+    toggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      var isOpen = !nav.classList.contains('open');
+      nav.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'إغلاق القائمة' : 'فتح القائمة');
+      toggle.textContent = isOpen ? '✕' : '☰';
+    });
+
+    nav.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    document.addEventListener('click', function (event) {
+      if (!header.contains(event.target)) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeMenu();
+    });
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 900) closeMenu();
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initMobileNavigation);
+  } else {
+    initMobileNavigation();
+  }
+})();
+</script>
+
+</body></html>
