@@ -15,10 +15,10 @@ function setTheme(mode) {
     themeButton.setAttribute("aria-label", light ? "التبديل إلى الدارك مود" : "التبديل إلى الوايت مود");
     themeButton.title = light ? "Switch to dark mode" : "Switch to light mode";
   }
-  try { localStorage.setItem("automation-technology-theme", mode); } catch (e) {}
+  try { localStorage.setItem("automation-technology-theme-v2", mode); } catch (e) {}
 }
 let initialTheme = "dark";
-try { initialTheme = localStorage.getItem("automation-technology-theme") || "dark"; } catch (e) {}
+try { initialTheme = localStorage.getItem("automation-technology-theme-v2") || "dark"; } catch (e) {}
 setTheme(initialTheme);
 if (themeButton) themeButton.addEventListener("click", () => {
   setTheme(document.documentElement.getAttribute("data-theme") === "light" ? "dark" : "light");
